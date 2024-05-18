@@ -22,7 +22,7 @@ export const useAppContext = () => {
 
 export const AppContextProvider = ( {children} : IAppContextProvider) => {
 
-    const [theme, setTheme] = useState<"dark" | "light">("dark")
+    const [theme, setTheme] = useState<"dark" | "light">("light")
 
     const value = {
         theme,
