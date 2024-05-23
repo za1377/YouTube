@@ -8,6 +8,7 @@ export const StyledHeader = styled.div `
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    margin: 0.2rem 0rem;
 `
 
 export const LeftSection = styled.div`
