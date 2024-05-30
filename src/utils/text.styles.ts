@@ -10,7 +10,7 @@ export const Text = styled.p`
      }
 
      &.auth{
-        color: ${({theme : {authBlue}}) => authBlue};
+        color: ${({ theme: { authBlue } }) => authBlue};
         font-weight: bold;
      }
 `
