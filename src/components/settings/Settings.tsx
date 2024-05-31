@@ -2,8 +2,11 @@ import { Setting, StyleSettings } from './Settings.styles';
 import { HiLanguage } from "react-icons/hi2";
 import { GoMoon } from "react-icons/go";
 import { Text } from '../../utils/Text.styles';
+import { useAppContext } from '../../context/App.context';
 
 function Settings() {
+
+    const {theme} = useAppContext();
 
     const SETTINGS = [
         {
@@ -15,7 +18,7 @@ function Settings() {
         {
             lable: 'Appearance',
             icon: <GoMoon  size={23}/>,
-            value: 'English',
+            value: theme,
             onClick: () => null
         },
     ]
