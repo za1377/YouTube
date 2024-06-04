@@ -1,10 +1,12 @@
 import { ReactNode, createContext, useContext, useState } from "react"
+import {ITranslation, LANGAUGE} from '../utils/translation'
 
 interface IAppContextValue {
-    theme: "dark" | "light",
-    language: "english" | "farsi",
-    toggleLanguage: () => void,
-    toggleTheme: () => void
+    theme: "dark" | "light";
+    language: "english" | "farsi";
+    toggleLanguage: () => void;
+    toggleTheme: () => void;
+    text: ITranslation;
 }
 
 interface IAppContextProvider {
@@ -26,7 +28,7 @@ export const useAppContext = () => {
 export const AppContextProvider = ( {children} : IAppContextProvider) => {
 
     const [theme, setTheme] = useState<"dark" | "light">("dark")
-    const [language, setLanguage] = useState<"english" | "farsi">("english")
+    const [language, setLanguage] = useState<"english" | "farsi">("farsi")
 
     const toggleTheme = () => {
         setTheme( (theme) => theme === "dark" ? "light" : "dark" )
@@ -40,7 +42,9 @@ export const AppContextProvider = ( {children} : IAppContextProvider) => {
         theme,
         language,
         toggleLanguage,
-        toggleTheme
+        toggleTheme,
+        text: LANGAUGE[language]
     }
+
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }

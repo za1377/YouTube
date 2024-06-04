@@ -119,7 +119,7 @@ const english : ITranslation = {
 const farsi : ITranslation = {
     signIn: "ورود",
     settings: "تنظیمات",
-    appearance: "ظاهر",
+    appearance: "تم",
     dark: "تیره",
     light: "روشن",
     language: "زبان",
@@ -173,4 +173,9 @@ const farsi : ITranslation = {
     subscribe: "Subscribe",
     views: "Views",
     subescriber: "subescriber"
+}
+
+export const LANGAUGE = {
+    english,
+    farsi
 }

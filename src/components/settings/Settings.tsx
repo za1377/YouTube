@@ -6,27 +6,27 @@ import { useAppContext } from '../../context/App.context';
 
 function Settings() {
 
-    const {theme} = useAppContext();
+    const {theme, text, language, toggleLanguage, toggleTheme} = useAppContext();
 
     const SETTINGS = [
         {
-            lable: 'Language',
+            lable: text.language,
             icon: <HiLanguage size={23}/>,
-            value: 'English',
-            onClick: () => null
+            value: text[language === "english" ? "farsi" : "english"],
+            onClick: () => toggleLanguage()
         },
         {
-            lable: 'Appearance',
+            lable: text.appearance,
             icon: <GoMoon  size={23}/>,
-            value: theme,
-            onClick: () => null
+            value: text[theme === "dark" ? "light" : "dark"],
+            onClick: () => toggleTheme()
         },
     ]
 
   return (
     <StyleSettings>
         {SETTINGS.map( ({lable, icon, value, onClick}) => (
-            <Setting>
+            <Setting onClick={onClick}>
                 {icon}
                 <Text>{`${lable} : ${value}`}</Text>
             </Setting>
