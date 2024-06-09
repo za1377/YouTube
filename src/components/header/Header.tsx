@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HeaderMoreSection, LeftSection, LogoSection, SearchSection, StyledHeader } from './Header.styles'
+import { HeaderMoreSection, LeftSection, LogoSection, SearchBar, SearchSection, StyledHeader } from './Header.styles'
 import { FaYoutube } from "react-icons/fa";
 import { Text } from '../../utils/Text.styles';
 import { SlMenu } from "react-icons/sl";
@@ -11,6 +11,7 @@ import Settings from '../settings/Settings';
 const Header = () => {
 
     const [showSettings, setShowSettings] = useState(false)
+    const [searchText, setSearchText] = useState("")
 
     return (
         <StyledHeader>
@@ -25,7 +26,12 @@ const Header = () => {
                 </LogoSection>
             </LeftSection>
 
-            <SearchSection>search</SearchSection>
+            <SearchSection>
+                <SearchBar>
+                    <input value={searchText}/>
+                </SearchBar>
+            </SearchSection>
+
             <HeaderMoreSection>
                 <Icon data-tooltip-id="setting" data-tooltip-content="Settings" 
                 onClick={() => setShowSettings(current => !current)}>
