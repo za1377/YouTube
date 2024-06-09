@@ -7,9 +7,12 @@ import { Icon } from '../../utils/Icon.styles';
 import AuthButton from '../authButton/AuthButton';
 import { CgMoreVerticalAlt } from "react-icons/cg";
 import Settings from '../settings/Settings';
+import { useAppContext } from '../../context/App.context';
+import { LuSearch } from "react-icons/lu";
 
 const Header = () => {
 
+    const { text } = useAppContext();
     const [showSettings, setShowSettings] = useState(false)
     const [searchText, setSearchText] = useState("")
 
@@ -18,7 +21,7 @@ const Header = () => {
 
             <LeftSection>
                 <Icon className='menu'>
-                    <SlMenu size={17}/>
+                    <SlMenu size={17} />
                 </Icon>
                 <LogoSection to='/'>
                     <FaYoutube size={30} color='#FF0000' />
@@ -28,13 +31,24 @@ const Header = () => {
 
             <SearchSection>
                 <SearchBar>
-                    <input value={searchText}/>
+                    <input
+                        value={searchText}
+                        placeholder={text.search}
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+                    <Icon
+                        data-tooltip-id='voiceSearch'
+                        data-tooltip-content={text.voiceSearch}
+                        $backgroundShow={true}
+                    >
+                        <LuSearch size={23} />
+                    </Icon>
                 </SearchBar>
             </SearchSection>
 
             <HeaderMoreSection>
-                <Icon data-tooltip-id="setting" data-tooltip-content="Settings" 
-                onClick={() => setShowSettings(current => !current)}>
+                <Icon data-tooltip-id="setting" data-tooltip-content="Settings"
+                    onClick={() => setShowSettings(current => !current)}>
                     <CgMoreVerticalAlt size={21} />
                 </Icon>
                 <AuthButton />
