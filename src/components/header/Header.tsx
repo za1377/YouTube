@@ -12,7 +12,7 @@ import { LuSearch } from "react-icons/lu";
 
 const Header = () => {
 
-    const { text } = useAppContext();
+    const { text, setSearchBarText } = useAppContext();
     const [showSettings, setShowSettings] = useState(false)
     const [searchText, setSearchText] = useState("")
 
@@ -40,6 +40,7 @@ const Header = () => {
                         data-tooltip-id='voiceSearch'
                         data-tooltip-content={text.voiceSearch}
                         $backgroundShow={true}
+                        onClick={() => setSearchBarText(searchText)}
                     >
                         <LuSearch size={23} />
                     </Icon>
