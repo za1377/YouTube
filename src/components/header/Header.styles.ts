@@ -8,7 +8,7 @@ export const StyledHeader = styled.div `
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    margin: 0.2rem 0rem;
+    margin: 0.5rem 0rem;
 `
 
 export const LeftSection = styled.div`
@@ -45,7 +45,6 @@ export const SearchBar = styled.div`
     border: 1px solid ${ ({theme}) => theme.grey2};
     background-color: ${ ({theme}) => theme.grey2};
     overflow: hidden;
-    margin-top: 3%;
 
     input{
         background-color: ${ ({theme}) => theme.background};

@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const beats = keyframes`
+    0%{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+    100%{
+        transform: scale(0.8);
+    }
+`
 
 export const Icon = styled.div< {$backgroundShow? : boolean} >`
     background-color: ${ ({theme, $backgroundShow}) => $backgroundShow ? theme.grey2 : "transparent" };
@@ -15,4 +27,9 @@ export const Icon = styled.div< {$backgroundShow? : boolean} >`
         }
     }
 
+    &.listenign {
+        background-color: ${({theme}) => theme.youtubeRed};
+        color: ${({theme}) => theme.white};
+        animation: ${beats} 1s linear infinite;
+    }
 `

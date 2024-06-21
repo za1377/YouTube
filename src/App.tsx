@@ -5,6 +5,7 @@ import { THEMES } from './utils/theme';
 import { useAppContext } from './context/App.context';
 import Header from './components/header/Header';
 import Tooltips from './utils/Tooltips';
+import Body from './components/body/Body';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Tooltips />
       <AppContainer>
         <Header />
+        <Body />
       </AppContainer>
     </ThemeProvider>
   );
