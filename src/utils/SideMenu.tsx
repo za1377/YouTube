@@ -28,7 +28,7 @@ export const MENU_LARGE = [
         list: [
             { name: "home", icon: <MdHome /> },
             { name: "shorts", icon: <SiYoutubeshorts /> },
-            { name: "subscription", icon: <BsCollectionPlay /> },
+            { name: "subscriptions", icon: <BsCollectionPlay /> },
         ]
 
     },
@@ -52,21 +52,21 @@ export const MENU_LARGE = [
             { name: "sport", icon: <GiTrophyCup /> },
             { name: "learning", icon: <PiLightbulbBold /> },
             { name: "fashionBeauty", icon: <GiHanger /> },
-            { name: "podcasts", icon: <MdPodcasts /> },
+            { name: "podcast", icon: <MdPodcasts /> },
         ]
 
     },
     {
         title: "",
         list: [
-            { name: "browesChannels", icon: <IoMdAddCircleOutline /> },
+            { name: "browseChannels", icon: <IoMdAddCircleOutline /> },
         ]
 
     },
     {
         title: "moreFromYoutube",
         list: [
-            { name: "youtubePermium", icon: <FaYoutube color='red' /> },
+            { name: "youtubePremium", icon: <FaYoutube color='red' /> },
             { name: "youtubeMusic", icon: <SiYoutubemusic color='red' /> },
             { name: "youtubeKids", icon: <TbBrandYoutubeKids color='red' /> },
         ]
@@ -78,7 +78,7 @@ export const MENU_LARGE = [
             { name: "settings", icon: <PiGearBold /> },
             { name: "reportHistory", icon: <CgFlag /> },
             { name: "help", icon: <IoMdHelpCircleOutline /> },
-            { name: "sendFeedback", icon: <MdOutlineFeedback /> },
+            { name: "sendFeedBack", icon: <MdOutlineFeedback /> },
         ]
 
     },

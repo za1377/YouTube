@@ -11,6 +11,7 @@ interface IAppContextValue {
     setSearchBarText: Dispatch<SetStateAction<string>>;
     isMenuSmall: boolean;
     toggleMenuSize: () => void;
+    activeMenuText: string;
 }
 
 interface IAppContextProvider {
@@ -35,6 +36,7 @@ export const AppContextProvider = ( {children} : IAppContextProvider) => {
     const [language, setLanguage] = useState<"english" | "farsi">("farsi")
     const [searchBarText, setSearchBarText] = useState("");
     const [isMenuSmall, setIsMenuSmall] = useState(false);
+    const [activeMenuText, setActiveMenuText] = useState("home")
 
     const toggleTheme = () => {
         setTheme( (theme) => theme === "dark" ? "light" : "dark" )
@@ -57,7 +59,8 @@ export const AppContextProvider = ( {children} : IAppContextProvider) => {
         searchBarText,
         setSearchBarText,
         isMenuSmall,
-        toggleMenuSize
+        toggleMenuSize,
+        activeMenuText
     }
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>
