@@ -16,6 +16,7 @@ export interface ITranslation {
     reportHistory: string;
     help: string;
     sendFeedBack: string;
+    you: string;
     moreFromYouTube: string;
     youtubePremium: string;
     youtubeMusic: string;
@@ -59,6 +60,7 @@ export interface ITranslation {
 
 const english : ITranslation = {
     signIn: "Sign In",
+    you: "You",
     settings: "Settings",
     appearance: "Appearance",
     dark: "Dark",
@@ -118,6 +120,7 @@ const english : ITranslation = {
 
 const farsi : ITranslation = {
     signIn: "ورود",
+    you: "شما",
     settings: "تنظیمات",
     appearance: "تم",
     dark: "تیره",
