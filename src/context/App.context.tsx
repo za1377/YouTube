@@ -1,5 +1,7 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useState } from "react"
-import {ITranslation, LANGAUGE} from '../utils/translation'
+import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react"
+import { ITranslation, LANGAUGE } from '../utils/translation';
+import { createClient } from "pexels";
+import { PEXELS_API_KEY } from "../utils/pexels";
 
 interface IAppContextValue {
     theme: "dark" | "light";
@@ -25,14 +27,18 @@ const AppContext = createContext<IAppContextValue | null>(null)
 export const useAppContext = () => {
     const appContext = useContext(AppContext)
 
-    if(!appContext) {
+    if (!appContext) {
         throw new Error("There is no theme")
     }
 
     return appContext;
 }
 
-export const AppContextProvider = ( {children} : IAppContextProvider) => {
+const client = createClient(PEXELS_API_KEY)
+
+
+
+export const AppContextProvider = ({ children }: IAppContextProvider) => {
 
     const [theme, setTheme] = useState<"dark" | "light">("dark")
     const [language, setLanguage] = useState<"english" | "farsi">("farsi")
@@ -41,12 +47,33 @@ export const AppContextProvider = ( {children} : IAppContextProvider) => {
     const [activeMenuText, setActiveMenuText] = useState("home")
     const [activeCategory, setActiveCategory] = useState("all")
 
+    useEffect(() => { 
+        fetchVideos(activeCategory)
+    }, [activeCategory])
+
+    useEffect(() => { 
+        fetchVideos(searchBarText)
+    }, [searchBarText])
+
+    const fetchVideos = async (query: string) => {
+
+        try {
+            const response = client.videos.search({
+                query,
+                per_page: 44
+            })
+            console.log("response : " + response)
+        } catch (error) {
+            console.log("there was an error!!")
+        }
+    }
+
     const toggleTheme = () => {
-        setTheme( (theme) => theme === "dark" ? "light" : "dark" )
+        setTheme((theme) => theme === "dark" ? "light" : "dark")
     }
 
     const toggleLanguage = () => {
-        setLanguage( (lang) => lang === "english" ? "farsi" : "english" )
+        setLanguage((lang) => lang === "english" ? "farsi" : "english")
     }
 
     const toggleMenuSize = () => {
