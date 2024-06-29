@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react"
 import { ITranslation, LANGAUGE } from '../utils/translation';
-import { createClient } from "pexels";
+import { Video, Videos, createClient } from "pexels";
 import { PEXELS_API_KEY } from "../utils/pexels";
 
 interface IAppContextValue {
@@ -16,6 +16,8 @@ interface IAppContextValue {
     activeMenuText: string;
     activeCategory: string;
     setActiveCategory: Dispatch<SetStateAction<string>>;
+    videos: Video[];
+    isFetchingVideos: boolean;
 }
 
 interface IAppContextProvider {
@@ -46,25 +48,37 @@ export const AppContextProvider = ({ children }: IAppContextProvider) => {
     const [isMenuSmall, setIsMenuSmall] = useState(false);
     const [activeMenuText, setActiveMenuText] = useState("home")
     const [activeCategory, setActiveCategory] = useState("all")
+    const [videos, setVideos] = useState<Video[]>([])
+    const [isFetchingVideos, setIsFetchingVideos] = useState(false);
 
-    useEffect(() => { 
+    useEffect(() => {
         fetchVideos(activeCategory)
     }, [activeCategory])
 
-    useEffect(() => { 
+    useEffect(() => {
         fetchVideos(searchBarText)
     }, [searchBarText])
 
     const fetchVideos = async (query: string) => {
-
+        setIsFetchingVideos(true)
         try {
-            const response = client.videos.search({
+            client.videos.search({
                 query,
                 per_page: 44
+            }).then(response => {
+                setVideos((response as Videos).videos)
+                setIsFetchingVideos(false)
+
+                console.log("response : " + response)
+            }).catch(error => {
+                setIsFetchingVideos(false)
+
+                console.log("there was an error!!")
+
             })
-            console.log("response : " + response)
         } catch (error) {
             console.log("there was an error!!")
+
         }
     }
 
@@ -92,7 +106,9 @@ export const AppContextProvider = ({ children }: IAppContextProvider) => {
         toggleMenuSize,
         activeMenuText,
         activeCategory,
-        setActiveCategory
+        setActiveCategory,
+        videos,
+        isFetchingVideos
     }
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>

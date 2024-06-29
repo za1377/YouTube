@@ -1,11 +1,16 @@
 import React from 'react'
-import { StyledContent } from './Content.styles'
+import { LoadingBackDrop, StyledContent } from './Content.styles'
 import Categories from '../categories/Categories'
+import { useAppContext } from '../../context/App.context'
 
 function Content() {
+
+  const {isFetchingVideos} = useAppContext();
+
   return (
     <StyledContent>
-        <Categories/>
+      <Categories />
+      {isFetchingVideos && <LoadingBackDrop />}
     </StyledContent>
   )
 }

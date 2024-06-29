@@ -11,7 +11,7 @@ export const StyleSettings = styled.div`
     padding: 0.5rem 0rem;
     border-radius: 0.5rem;
     box-shadow: 0px 10px 43px -3px ${ ({theme}) => theme.settingsShadow};
-    z-index: 20;
+    z-index: 200;
 `
 
 export const Setting = styled.div`
