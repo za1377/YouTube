@@ -1,4 +1,4 @@
-# YouTube Homepage Clone 🎬
+# YouTube Homepage 🎬
 A simple React + TypeScript project built to practice React Context, Styled-Components, and TypeScript.
 
 ## ✨ Features
